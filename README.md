@@ -12,7 +12,13 @@ The current work explores a CNN-based approach to segment multiple COVID lesions
 This code was developed using a Keras framework with a Tensorflow backend. The file with all the requirements is included in the repository.
 
 #### File Structure
+*1_preprocessing.py* - Receives original dataset images and applies preprocessing steps according to what is described in the publication.
 
+*2_train_evaluate_model.py* - Optimizes and evaluates the U-Net model using the preprocessed images.
+
+*3_visualize_results.py* - Creates an overlayed plot of the ground truth and predicted segmentation images, marking the True Positive pixels in green, False Negative pixels in red and False Positive pixels in yellow.
+
+*4_get_metrics.py* - Based on the ground truth and predicted segmentation images, calculates the accuracy, accuracy per class, recall, precision, dice, and jaccard metrics.
 
 ### Credits
 

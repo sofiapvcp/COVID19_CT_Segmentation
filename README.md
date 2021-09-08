@@ -9,7 +9,7 @@ The current work explores a CNN-based approach to segment multiple COVID lesions
 ### How to Use
 
 #### Requirements
-This code was developed using a Keras framework with a Tensorflow backend. The file with all the requirements is included in the repository.
+This code was developed using a Keras framework with a Tensorflow backend. The file with all the requirements is included in the repository (*requirements_env.yml*).
 
 #### File Structure
 *1_preprocessing.py* - Receives original dataset images and applies preprocessing steps according to what is described in the publication.

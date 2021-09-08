@@ -23,4 +23,4 @@ This code was developed using a Keras framework with a Tensorflow backend. The f
 ### Credits
 
 If you use this code, please cite the following publication: 
-**J. Rocha, S. Pereira, A. Campilho and A. M. Mendonça, "Segmentation of COVID-19 Lesions in CT Images," 2021 IEEE EMBS International Conference on Biomedical and Health Informatics (BHI), 2021, pp. 1-4, doi: 10.1109/BHI50953.2021.9508520.**
+**J. Rocha, S. Pereira, A. Campilho and A. M. Mendonça, "Segmentation of COVID-19 Lesions in CT Images," 2021 IEEE EMBS International Conference on Biomedical and Health Informatics (BHI), 2021, pp. 1-4, doi: 10.1109/BHI50953.2021.9508520. https://ieeexplore.ieee.org/document/9508520**

@@ -13,7 +13,7 @@ import os
 
 #%% DEFINE PATH TO SAVE
 
-saveto_path = 'F:/COVID_Joana/Dados covid/get_metrics/'
+saveto_path = 'C:/Users/SofiaPereira/Documents/Projects/COVID_segmentation/get_metrics/'
 if os.path.isdir(saveto_path)==True:
     shutil.rmtree(saveto_path)
 try:
@@ -24,8 +24,8 @@ except OSError:
     
 #%% CHECK ALL IMAGES IN FOLDER
 
-test_gt_path = r'F:/COVID_Joana/Dados covid/v4_all_positive/test/masks/masks/'
-test_pred_path = r'F:/COVID_Joana/Dados covid/model_07-01-2021_07h52_correctpreds/predictions_07-01-2021_07h52/'
+test_gt_path = "C:/Users/SofiaPereira/Documents/Projects/COVID_segmentation/preprocessed_data/test/masks/masks/"
+test_pred_path = 'C:/Users/SofiaPereira/Documents/Projects/COVID_segmentation/14-09-2021_09h09/predictions_14-09-2021_09h09/'
 dim = (512,512)
 
 img_list = [file for file in os.listdir(test_pred_path) if file.endswith('.png')]

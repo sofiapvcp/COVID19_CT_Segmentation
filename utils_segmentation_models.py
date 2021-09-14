@@ -21,7 +21,7 @@ from matplotlib.ticker import MaxNLocator
 
 #%%
 
-def get_model_plots(history,date,save=True,saveto_path=None):
+def get_model_plots(history,date,fold="NA",save=True,saveto_path=None):
     """ Plot the performance during training and validation. """
     plt.figure()
     
@@ -44,7 +44,7 @@ def get_model_plots(history,date,save=True,saveto_path=None):
     plt.ylabel("Loss")
     plt.legend()
     if save:
-        plt.savefig(saveto_path + 'learning_curve_' + date + '.png')
+        plt.savefig(saveto_path + 'fold' + fold + learning_curve_ + date + '.png')
         
     #DICE
     plt.figure(figsize=(8, 8))
@@ -54,7 +54,7 @@ def get_model_plots(history,date,save=True,saveto_path=None):
     plt.xlabel("Epochs")
     plt.legend()
     if save:
-        plt.savefig(saveto_path + 'trainval_dice_' + date + '.png')
+        plt.savefig(saveto_path + 'fold' + fold + 'trainval_dice_' + date + '.png')
     
     
     #LOSS
@@ -67,7 +67,7 @@ def get_model_plots(history,date,save=True,saveto_path=None):
     #plt.ylim([0,0.05])
     plt.legend()
     if save:
-        plt.savefig(saveto_path + 'trainval_loss_' + date + '.png')
+        plt.savefig(saveto_path + 'fold' + fold + 'trainval_loss_' + date + '.png')
     
     
     #LEARNING RATE
@@ -77,7 +77,7 @@ def get_model_plots(history,date,save=True,saveto_path=None):
     plt.xlabel("Epochs")
     plt.legend()
     if save:
-        plt.savefig(saveto_path + 'learningrate_' + date + '.png')
+        plt.savefig(saveto_path + 'fold' + fold + 'learningrate_' + date + '.png')
     
     plt.show()
     plt.close()

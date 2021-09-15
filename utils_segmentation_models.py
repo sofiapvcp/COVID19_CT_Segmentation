@@ -93,7 +93,6 @@ def get_eval(val_scores,test_scores,date,save=True,saveto_path=None):
         file.write(str(val_scores)) 
         file.write('\nTest scores: ')
         file.write(str(test_scores)) 
-        file.write('\nTest sklearn-based scores: ')
         file.close() 
 
 def jaccard_similarity_score(tn, fp, fn, tp):

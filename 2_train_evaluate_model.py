@@ -60,7 +60,7 @@ df=pd.read_csv(r"C:\Users\SofiaPereira\Documents\Projects\COVID_segmentation\pre
 
 for train_index, val_index in kf.split(df,groups=df['Pat_id']):
     K.clear_session()
-    file = open(saveto_path + 'finalCV_scores_fold_' + str(i) + '_' + date + '.txt','w')
+    file = open(saveto_path + 'Scores_fold_' + str(i) + '_' + date + '.txt','w')
     
 #%% KERAS DATA GENERATORS (WITH DATA AUGMENTATION) AND SOME HYPER PARAMETERS
 
@@ -146,11 +146,9 @@ for train_index, val_index in kf.split(df,groups=df['Pat_id']):
     
     NO_OF_TRAINING_IMAGES = len(os.listdir(train_dir_img))
     NO_OF_VAL_IMAGES = len(os.listdir(val_dir_img))
-    NO_OF_TEST_IMAGES = len(os.listdir(test_dir_img))
     
     steps_train= np.floor(NO_OF_TRAINING_IMAGES/BATCH_SIZE)
     steps_val= np.floor(NO_OF_VAL_IMAGES/BATCH_SIZE)
-    steps_test= np.floor(NO_OF_TEST_IMAGES /BATCH_SIZE)
     
     NO_OF_EPOCHS = 100
     weights_path = saveto_path + 'finalmodel_' + date + '_fold_' + str(i) + '.h5'
@@ -177,10 +175,10 @@ for train_index, val_index in kf.split(df,groups=df['Pat_id']):
 
 #%% GENERATE MODEL PERFORMANCE PLOTS AND FOLD METRICS
     get_model_plots(history=history,date=date,save=True,saveto_path=saveto_path,fold=i)
-    val_scores = model.evaluate_generator(val_generator,fold=i, steps=steps_val,verbose=1)
+    val_scores = model.evaluate_generator(val_generator, steps=steps_val,verbose=1)
     print(val_scores)
     scores.append(val_scores)
-    file.write('\nValidation scores after 2nd stage finetuning')
+    file.write('\nValidation scores: ')
     file.write(str(val_scores))
     del model
     del history
@@ -214,14 +212,15 @@ model.summary()
 
 #%% DEFINE GENERATORS FOR TEST DATA
 
+test_dir_img = r"C:\Users\SofiaPereira\Documents\Projects\COVID_segmentation\preprocessed_data\test\imgs"
+test_dir_msk = r"C:\Users\SofiaPereira\Documents\Projects\COVID_segmentation\preprocessed_data\test\masks"
+
 test_datagen = ImageDataGenerator(rescale=1./255)
 test_datagen_masks = ImageDataGenerator(rescale=1./255)
 
-NO_OF_TEST_IMAGES = len(os.listdir(test_dir_img))
-steps_test= np.floor(NO_OF_TEST_IMAGES /BATCH_SIZE)
+NO_OF_TEST_IMAGES = len(os.listdir(test_dir_img + "\imgs"))
 
-test_dir_img = r"C:\Users\SofiaPereira\Documents\Projects\COVID_segmentation\preprocessed_data\test\imgs"
-test_dir_msk = r"C:\Users\SofiaPereira\Documents\Projects\COVID_segmentation\preprocessed_data\test\masks"
+steps_test= np.floor(NO_OF_TEST_IMAGES /BATCH_SIZE)
 
 test_image_generator = val_datagen.flow_from_directory(directory = test_dir_img,
                                                    batch_size = BATCH_SIZE,target_size=(im_height,im_width),
